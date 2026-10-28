@@ -12,7 +12,7 @@ import pandas as pd
 # Parcel model imports
 import version as ver
 import constants as c
-from assimilo_ode_interface import *
+from assimulo_ode_interface import *
 import pdb
 
 from aerosol import AerosolSpecies
