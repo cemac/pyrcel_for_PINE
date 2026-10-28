@@ -158,7 +158,7 @@ def plot_particle_state(parcel_trace, aerosol_trace, aero_species, activated_tim
     ax.set_title(aero_species.species)
     ax.set_xlabel('dry radius ($\mu$m)')
     ax.set_ylabel('wet radius ($\mu$m)')
-    ax.legend(bbox_to_anchor=(0.75, -0.2),ncol=3)
+    ax.legend(bbox_to_anchor=(0.8, -0.2),ncol=3)
     ax2.set_ylabel('Time at activation / freezing (s)')
     ax2.legend(loc='lower right')
     ax.semilogx()
@@ -265,7 +265,7 @@ def plot_nice_timeseries(parcel_trace, aero_species, freeze_times, rho_a_d, fout
             if len(ix[0])>0:
                 nice[t]=np.sum(Nis[ix[0]])
         ax.plot(times, nice*1e-12, label=k)
-        print(nice, 'ice particles per kg of air')
+        print(nice[-1], 'final ice particles per kg of air')
     ax.set_ylabel('NICE (10$^{-12}$kg-1)')
     ax.set_xlabel('time (s)')
     ax.legend()

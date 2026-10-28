@@ -222,7 +222,7 @@ def parcel_ode_rhs(t, y, sw, T0, nr, r_drys, Nis, kappas, accom, Chamber):
 
             ## Converting water supersaturation to ice supersaturation according to Korolev and Mazin, 2003 (not necessary to correct for particle equilibrium saturation)
             xi = pv_sat/p_i 
-            Si = xi(S + 1) - 1 # xi(S+1) is the saturation wrt to ice 
+            Si = xi*(S + 1) - 1 # xi(S+1) is the saturation wrt to ice 
 
             ## Size and ice tendencies
             dr_dt = (G / r) * Si
