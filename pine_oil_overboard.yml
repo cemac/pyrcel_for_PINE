@@ -1,0 +1,39 @@
+# Simple, example configuration script for a PINE parcel model simulation
+
+# Save the simulation output in a folder "output/" with the name "pine_oil_overboard"
+experiment_control:
+    name: "pine_oil_overboard"
+    output_dir: "output/"
+    output_csv: False
+
+# Here, we set the model to run in 1 second chunks and save output interpolated to every
+# 0.1 second. It will end after 9999 simulation seconds, unless termination criteria
+# (a supersaturation max) is reached, after which it will stop once the simulated parcel has run for another 1 second.
+model_control:
+    output_dt: 0.1
+    solver_dt: 1.0
+    t_end: 40.0
+
+
+# Initialize the model with bimodal oil overboard aerosol species:
+# dilution_factor=2.025e5 Ns=[2.35e8, 6.24e8]/dilution_factor = [1160.494, 3081.481]
+initial_aerosol:
+    - name: oil_overboard
+      distribution: multimode_lognormal
+      kappa: 0.02
+      bins: 50
+      distribution_args: { mus:[0.023,0.0725],  Ns:[1160.491, 3081.481], sigmas:[1.47, 1.81] }
+
+
+# Set the model initial conditions
+initial_conditions:
+    temperature: 243.15 # K
+    relative_humidity_ice: 1.0 # %, as a fraction
+    pressure: 102541.0 # Pa
+
+# set up constants related to chamber setup
+chamber_setup:
+    vol_flowrate: 0.00006333 # nominally 4 litres per minute but in practice more like 3.8 in m3 per second
+    chamber_vol: 0.007 # 7 litres in m3
+    chamber_area: 0.21 # m2
+    chamber_diameter: 0.2

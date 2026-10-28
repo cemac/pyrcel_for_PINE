@@ -1,0 +1,37 @@
+# Simple, example configuration script for a PINE parcel model simulation
+
+# Save the simulation output in a folder "output_pine/" with the name "pine_sulphate"
+experiment_control:
+    name: "pine_sulphate"
+    output_dir: "output/"
+    output_csv: True
+
+# Here, we set the model to run in 1 second chunks and save output interpolated to every
+# 0.1 second. It will end after 40 simulation seconds
+model_control:
+    output_dt: 0.1
+    solver_dt: 1.0
+    t_end: 40.0
+
+# Initialize the model with sulphate aerosol species (mu in microns, N in cm-3:
+initial_aerosol:
+    # 1) a sulphate mode, with 50 bins
+    - name: sulphate
+      distribution: lognormal
+      distribution_args: { mu: 0.15, N: 1000, sigma: 1.2 }
+      kappa: 0.54
+      bins: 50
+
+
+# Set the model initial conditions
+initial_conditions:
+    temperature: 243.15 # K
+    relative_humidity_ice: 1.0 # %, as a fraction
+    pressure: 102541.0 # Pa
+
+# set up constants related to chamber setup
+chamber_setup:
+    vol_flowrate: 0.00006333 # nominally 4 litres per minute but in practice more like 3.8 in m3 per second
+    chamber_vol: 0.007 # 7 litres in m3
+    chamber_area: 0.21 # m2
+    chamber_diameter: 0.2

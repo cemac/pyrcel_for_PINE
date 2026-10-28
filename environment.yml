@@ -1,0 +1,13 @@
+name: pyrcel_for_PINE
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.8
+  - numba
+  - numpy
+  - pandas
+  - pyyaml
+  - scipy
+  - xarray
+  - matplotlib
+  - assimulo
